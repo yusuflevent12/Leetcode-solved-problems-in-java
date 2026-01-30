@@ -17,7 +17,7 @@ class Solution {
         for(int i=0;i<signs.length;i++){
             if(signs[i].equalsIgnoreCase("I")){
                 if(i+1!=signs.length) {
-                    if (signs[i + 1].equalsIgnoreCase("v") || signs[i + 1].equalsIgnoreCase("X")) {
+                    if (signs[i + 1].equalsIgnoreCase("v") || signs[i + 1].equalsIgnoreCase("Xgit")) {
                         number -= I;
                     }else {
                         number+=I;
