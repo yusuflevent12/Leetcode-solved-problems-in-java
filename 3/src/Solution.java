@@ -2,29 +2,30 @@ import java.util.ArrayList;
 
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        String [] list=s.split("");
-
-        int start=0;
-        int end=0;
-        //armutana
-        int max=0;
-        ArrayList<String> new_list=new ArrayList<>();
-        for(int i=0;i<list.length;i++){
-            if(!new_list.contains(list[i])){
-                end++;
-                new_list.add(list[i]);
-            }else{
-                if(max<end) {
-                    max = end;
-                }
-                i--;
-                new_list.clear();
-                end=0;
-            }
-        }
-        if(max<s.length()){
+        if(s.length()==0||s==null){
+            return 0;
+        } else if (s.equals(" ")) {
+            return 1;
+        }else if(s.length()==1){
             return 1;
         }
-        return max;
+        String []list=s.split("");
+        ArrayList<String> prefix=new ArrayList<>();
+        int max=0;
+        for(int i=0;i<list.length;i++){
+            for(int j=i;j<list.length;j++){
+                if(prefix.contains(list[j])){
+                    if(max<prefix.size()){
+                        max=prefix.size();
+                    }
+                    prefix.clear();
+                   break;
+
+                }else {
+                    prefix.add(list[j]);
+                }
+            }
+        }
+        return  max;
     }
 }
